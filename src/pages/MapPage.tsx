@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, Info, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ParkingMap from '@/components/ParkingMap';
+import LiveLocationMap from '@/components/LiveLocationMap';
 
 const MapPage = () => {
   return (
@@ -21,6 +22,10 @@ const MapPage = () => {
               View and select available parking spots
             </p>
           </div>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-8 mb-8">
+          <LiveLocationMap />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
