@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,7 +8,8 @@ import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
-import { ArrowRight, Calendar, Clock, CreditCard } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, CreditCard, QrCode } from 'lucide-react';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 const BookingForm = () => {
   const [searchParams] = useSearchParams();
@@ -209,21 +211,55 @@ const BookingForm = () => {
           
           <div className="space-y-2">
             <Label htmlFor="paymentMethod">Payment Method</Label>
-            <Select
-              name="paymentMethod"
-              value={formData.paymentMethod}
-              onValueChange={(value) => handleSelectChange('paymentMethod', value)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select payment method" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="credit-card">Credit Card</SelectItem>
-                <SelectItem value="debit-card">Debit Card</SelectItem>
-                <SelectItem value="upi">UPI</SelectItem>
-                <SelectItem value="cash">Cash on Arrival</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex items-center gap-2">
+              <Select
+                name="paymentMethod"
+                value={formData.paymentMethod}
+                onValueChange={(value) => handleSelectChange('paymentMethod', value)}
+                className="flex-grow"
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select payment method" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="credit-card">Credit Card</SelectItem>
+                  <SelectItem value="debit-card">Debit Card</SelectItem>
+                  <SelectItem value="upi">UPI</SelectItem>
+                  <SelectItem value="cash">Cash on Arrival</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              {formData.paymentMethod === 'upi' && (
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="outline" size="icon" title="Show UPI QR Code">
+                      <QrCode className="h-4 w-4" />
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Scan QR Code to Pay</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Scan this QR code with your UPI app to make the payment.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <div className="flex justify-center p-4">
+                      <img 
+                        src="/lovable-uploads/e84a381d-cbd4-4e25-a2b7-7813baf841f1.png" 
+                        alt="UPI QR Code" 
+                        className="max-w-[250px] border p-2 rounded-md"
+                      />
+                    </div>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Close</AlertDialogCancel>
+                      <AlertDialogAction onClick={() => toast.success('Payment verified!')}>
+                        I've made the payment
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              )}
+            </div>
           </div>
           
           <Separator className="my-4" />
