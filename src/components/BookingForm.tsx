@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -37,7 +36,7 @@ const BookingForm = () => {
   };
   
   const calculatePrice = () => {
-    const basePrice = 3; // $3 per hour
+    const basePrice = 250; // ₹250 per hour
     const hours = parseInt(formData.duration);
     
     let vehicleMultiplier = 1;
@@ -221,7 +220,7 @@ const BookingForm = () => {
               <SelectContent>
                 <SelectItem value="credit-card">Credit Card</SelectItem>
                 <SelectItem value="debit-card">Debit Card</SelectItem>
-                <SelectItem value="paypal">PayPal</SelectItem>
+                <SelectItem value="upi">UPI</SelectItem>
                 <SelectItem value="cash">Cash on Arrival</SelectItem>
               </SelectContent>
             </Select>
@@ -232,7 +231,7 @@ const BookingForm = () => {
           <div className="bg-muted/50 p-4 rounded-lg space-y-2">
             <div className="flex justify-between text-sm">
               <span>Base Rate</span>
-              <span>$3.00/hour</span>
+              <span>₹250.00/hour</span>
             </div>
             <div className="flex justify-between text-sm">
               <span>Duration</span>
@@ -253,7 +252,7 @@ const BookingForm = () => {
             <Separator className="my-2" />
             <div className="flex justify-between font-semibold">
               <span>Total Price</span>
-              <span>${calculatePrice()}</span>
+              <span>₹{calculatePrice()}</span>
             </div>
           </div>
         </form>

@@ -36,7 +36,7 @@ const BookPage = () => {
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       Regular parking spaces suitable for most vehicles. Conveniently located throughout the facility.
                     </p>
-                    <div className="mt-2 text-sm font-medium text-gray-900 dark:text-white">$3.00/hour</div>
+                    <div className="mt-2 text-sm font-medium text-gray-900 dark:text-white">₹250.00/hour</div>
                   </div>
                 </TabsContent>
                 <TabsContent value="premium" className="mt-4">
@@ -45,7 +45,7 @@ const BookPage = () => {
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       Wider spaces with enhanced security, located closer to entrances and elevators. Includes complementary car wash.
                     </p>
-                    <div className="mt-2 text-sm font-medium text-gray-900 dark:text-white">$5.00/hour</div>
+                    <div className="mt-2 text-sm font-medium text-gray-900 dark:text-white">₹400.00/hour</div>
                     <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">✓ Prime location ✓ Extra wide spaces ✓ Car wash</div>
                   </div>
                 </TabsContent>

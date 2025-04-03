@@ -82,7 +82,7 @@ const ConfirmationPage = () => {
                       <p className="text-sm text-gray-600 dark:text-gray-400">Booking Reference</p>
                     </div>
                     <div className="text-right">
-                      <h3 className="font-bold text-xl">${bookingData.price}</h3>
+                      <h3 className="font-bold text-xl">₹{bookingData.price}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400">Total Paid</p>
                     </div>
                   </div>
@@ -127,7 +127,7 @@ const ConfirmationPage = () => {
                         <div className="text-sm text-gray-600 dark:text-gray-400">
                           {bookingData.paymentMethod === 'credit-card' ? 'Credit Card' : 
                            bookingData.paymentMethod === 'debit-card' ? 'Debit Card' : 
-                           bookingData.paymentMethod === 'paypal' ? 'PayPal' : 'Cash on Arrival'}
+                           bookingData.paymentMethod === 'upi' ? 'UPI' : 'Cash on Arrival'}
                         </div>
                       </div>
                     </div>
