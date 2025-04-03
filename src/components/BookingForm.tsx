@@ -216,9 +216,8 @@ const BookingForm = () => {
                 name="paymentMethod"
                 value={formData.paymentMethod}
                 onValueChange={(value) => handleSelectChange('paymentMethod', value)}
-                className="flex-grow"
               >
-                <SelectTrigger>
+                <SelectTrigger className="flex-grow">
                   <SelectValue placeholder="Select payment method" />
                 </SelectTrigger>
                 <SelectContent>
